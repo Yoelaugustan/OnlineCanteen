@@ -39,6 +39,7 @@ public class Main {
 		while(true) {
 			showMenu(canteen, customer, carts);
 		}
+		
 	}
 	
 	public static void showMenu(Canteen canteen, Customers customer, Carts carts) {
@@ -49,15 +50,14 @@ public class Main {
 		System.out.printf("Choice[1-3]: ");
 		
 		Scanner scan = new Scanner(System.in);
-		int choice = scan.nextInt(); 
-		scan.nextLine(); //consume new line
+		int choice = scan.nextInt(); scan.nextLine(); //consume new line
 		
 		switch (choice) {
 		 	case 1:
 		 		System.out.println();
 		 		canteen.displayStalls();
 		 		System.out.println("Please choose a stall you want to visit");
-		 		System.out.printf("Choice[Stall_Name]: ");
+		 		System.out.printf("Enter stall name: ");
 		 		String stallName = scan.nextLine();
                 Stalls selectedStall = canteen.getStallByName(stallName);
                 
@@ -113,6 +113,10 @@ public class Main {
                 break;
 		 	case 2:
 		 		// Display Cart
+		 	    System.out.println("\nHere's your current cart:");
+		 	    carts.displayCart();
+		 	    System.out.println();
+		 	    break;
 		 	case 3:
 		 		// Transaction History
 		 	default:
@@ -135,4 +139,5 @@ public class Main {
             System.out.println("Menu item not found.");
         }
 	}
+	
 }
