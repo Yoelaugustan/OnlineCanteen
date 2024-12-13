@@ -46,7 +46,9 @@ public class Main {
 		System.out.printf("\nHello %s Welcome to Canteen!\n", customer.getCustomerName());
 		System.out.println("1. Purchase Food");
 		System.out.println("2. CheckOut");
-		System.out.println("3. View Transaction History");
+		System.out.println("3. Update Item in Cart");
+		System.out.println("4. Delete Item from Cart");
+		System.out.println("5. Transaction History");
 		System.out.printf("Choice[1-3]: ");
 		
 		Scanner scan = new Scanner(System.in);
@@ -118,7 +120,25 @@ public class Main {
 		 	    System.out.println();
 		 	    break;
 		 	case 3:
-		 		// Transaction History
+	            System.out.println("\nUpdate Item in Cart:");
+	            carts.displayCart();
+	            System.out.print("Enter the name of the item to update: ");
+	            String updateItemName = scan.nextLine();
+	            System.out.print("Enter the new quantity: ");
+	            int newQuantity = scan.nextInt();
+	            scan.nextLine(); // Consume newline
+	            carts.updateCartItem(updateItemName, newQuantity);
+	            break;
+
+	        case 4:
+	            System.out.println("\nDelete Item from Cart:");
+	            carts.displayCart();
+	            System.out.print("Enter the name of the item to delete: ");
+	            String deleteItemName = scan.nextLine();
+	            carts.deleteCartItem(deleteItemName);
+	            break;
+	        case 5:
+	        	//Transaction History
 		 	default:
 		 		System.out.println("Please choose between 1 and 2");
 		}
