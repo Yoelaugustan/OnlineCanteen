@@ -54,4 +54,12 @@ public class Carts {
 	    }
 	    System.out.println("Item not found in the cart.");
 	}
+	
+	public void clearCart() {
+		cartItems.clear();
+	}
+	
+	public ArrayList<CartItems> getCartItems() {
+	    return cartItems;
+	}
 }

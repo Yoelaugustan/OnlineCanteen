@@ -49,7 +49,8 @@ public class Main {
 		System.out.println("3. Update Item in Cart");
 		System.out.println("4. Delete Item from Cart");
 		System.out.println("5. Transaction History");
-		System.out.printf("Choice[1-3]: ");
+		System.out.println("6. Exit");
+		System.out.printf("Choice[1-6]: ");
 		
 		Scanner scan = new Scanner(System.in);
 		int choice = scan.nextInt(); scan.nextLine(); //consume new line
@@ -101,6 +102,7 @@ public class Main {
                 	            scan.nextLine(); // Consume newline
                 	            carts.addToCarts(item, quantity);
                 	            System.out.println("Item added to cart.");
+                	            carts.displayCart();
                 			}
                 			else {
                 				System.out.println("Menu Item Not Found!");
@@ -117,7 +119,17 @@ public class Main {
 		 		// Display Cart
 		 	    System.out.println("\nHere's your current cart:");
 		 	    carts.displayCart();
-		 	    System.out.println();
+		 	    System.out.println("Checkout Successful!!");
+		 	    
+		 	    // Create Temporary Cart
+		 	    Carts cartTemp = new Carts();
+			 	for (CartItems item : carts.getCartItems()) {
+			 		cartTemp.addToCarts(item.getMenuitems(), item.getQuantity());
+			 	}
+			 	
+		 	    Transactions transaction = new Transactions(cartTemp);
+		 	    customer.addTransactions(transaction);
+		 	    carts.clearCart();
 		 	    break;
 		 	case 3:
 	            System.out.println("\nUpdate Item in Cart:");
@@ -128,6 +140,7 @@ public class Main {
 	            int newQuantity = scan.nextInt();
 	            scan.nextLine(); // Consume newline
 	            carts.updateCartItem(updateItemName, newQuantity);
+	            carts.displayCart();
 	            break;
 
 	        case 4:
@@ -136,11 +149,15 @@ public class Main {
 	            System.out.print("Enter the name of the item to delete: ");
 	            String deleteItemName = scan.nextLine();
 	            carts.deleteCartItem(deleteItemName);
+	            carts.displayCart();
 	            break;
 	        case 5:
-	        	//Transaction History
+	        	customer.viewTransactionHistory();
+	        	break;
+	        case 6:
+	        	System.exit(0);
 		 	default:
-		 		System.out.println("Please choose between 1 and 2");
+		 		System.out.println("Please choose between 1 and 5");
 		}
 	}
 	
@@ -154,7 +171,8 @@ public class Main {
             int quantity = scan.nextInt();
             scan.nextLine(); // Consume newline
             carts.addToCarts(item, quantity);
-            System.out.println("Item added to cart.");
+            System.out.println("Item added to cart.\n");
+            carts.displayCart();
         } else {
             System.out.println("Menu item not found.");
         }
