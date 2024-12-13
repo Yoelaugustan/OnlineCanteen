@@ -30,4 +30,28 @@ public class Carts {
 	        System.out.printf("Total Price: Rp.%.2f\n", total);
 	    }
 	}
+	public void updateCartItem(String itemName, int newQuantity) {
+	    for (CartItems item : cartItems) {
+	        if (item.getMenuitems().getName().equalsIgnoreCase(itemName)) {
+	            if (newQuantity > 0) {
+	                item.setQuantity(newQuantity);
+	                System.out.println("Quantity updated successfully.");
+	            } else {
+	                System.out.println("Quantity must be greater than zero. Use delete if you want to remove the item.");
+	            }
+	            return;
+	        }
+	    }
+	    System.out.println("Item not found in the cart.");
+	}
+	public void deleteCartItem(String itemName) {
+	    for (int i = 0; i < cartItems.size(); i++) {
+	        if (cartItems.get(i).getMenuitems().getName().equalsIgnoreCase(itemName)) {
+	            cartItems.remove(i);
+	            System.out.println("Item removed from the cart.");
+	            return;
+	        }
+	    }
+	    System.out.println("Item not found in the cart.");
+	}
 }
