@@ -1,5 +1,3 @@
-package OnlineCanteen;
-
 import java.util.ArrayList;
 
 public class Carts {
