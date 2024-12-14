@@ -59,6 +59,15 @@ public class Carts {
 		cartItems.clear();
 	}
 	
+	public CartItems getCartItemByName(String name) {
+		for(CartItems cartItem : cartItems) {
+			if(cartItem.getMenuitems().getName().equalsIgnoreCase(name)) {
+				return cartItem;
+			}
+		}
+		return null;
+	}
+	
 	public ArrayList<CartItems> getCartItems() {
 	    return cartItems;
 	}
