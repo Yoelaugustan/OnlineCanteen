@@ -1,5 +1,3 @@
-package OnlineCanteen;
-
 public class CartItems {
 	private MenuItems menuitems;
 	private int quantity;
