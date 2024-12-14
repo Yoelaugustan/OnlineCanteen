@@ -30,12 +30,14 @@ public class Stalls {
 	
 	public void displayMenuSortedByPrice() {
         menuItems.sort(Comparator.comparingDouble(MenuItems::getPrice));
+		System.out.println();
         System.out.println("Menu sorted by Price for " + name + ":");
         displayMenuItems();
     }
 	
 	public void displayMenuSortedByRating() {
         menuItems.sort(Comparator.comparingDouble(MenuItems::getRating).reversed());
+		System.out.println();
         System.out.println("Menu sorted by Price for " + name + ":");
         displayMenuItems();
     }

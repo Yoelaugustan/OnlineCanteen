@@ -14,7 +14,6 @@ public class Transactions {
 	}
 	
 	public void displayTransactionDetails() {
-		System.out.println("Your Transaction: ");
 		System.out.println(getFormattedTimestamp());
 		carts.displayCart();
 	}

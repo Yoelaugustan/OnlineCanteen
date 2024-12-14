@@ -16,6 +16,7 @@ public class Canteen {
 	
 	public void displayStalls() {
 		int i = 1;
+		System.out.println();
 		for(Stalls stall : stalls) {
 			System.out.printf("%d. %s\n", i, stall.getStallName());
 			i++;
